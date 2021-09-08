@@ -1,0 +1,12 @@
+<div class="container px-sm-0">
+  <div class="row">
+    <%= render 'layouts/errors', obj: @book %>
+    <div class="col-md-3">
+      <%= render 'users/user_info', user: current_user %>
+      <%= render 'books/new', book: @book %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <%= render 'books/index', books: @books %>
+    </div>
+  </div>
+</div>

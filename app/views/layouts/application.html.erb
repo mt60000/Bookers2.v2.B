@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/a426ae5244.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
@@ -24,29 +25,29 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li>
-                  <%= link_to "Home", user_path(current_user), class: "nav-link text-light" %>
+                  <%= link_to " Home", user_path(current_user), class: "fas fa-home nav-link text-light" %>
                 </li>
                 <li>
-                  <%= link_to "Users", users_path, class: "nav-link text-light" %>
+                  <%= link_to " Users", users_path, class: "fas fa-users nav-link text-light" %>
                 </li>
                 <li>
-                  <%= link_to "Books", books_path, class: "nav-link text-light" %>
+                  <%= link_to " Books", books_path, class: "fas fa-book-open nav-link text-light" %>
                 </li>
                 <li>
-                  <%= link_to "logout", destroy_user_session_path, method: :delete, class: "nav-link text-light" %>
+                  <%= link_to " logout", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt nav-link text-light" %>
                 </li>
               <% else %>
                 <li>
-                  <%= link_to "Home", root_path, class: "nav-link text-light" %>
+                  <%= link_to " Home", root_path, class: "fas fa-home nav-link text-light" %>
                 </li>
                 <li>
-                  <%= link_to "About",about_path, class: "nav-link text-light" %>
+                  <%= link_to " About", home_about_path, class: "fas fa-link nav-link text-light" %>
                 </li>
                 <li>
-                  <%= link_to "sign up", new_user_registration_path, class: "nav-link text-light" %>
+                  <%= link_to " sign up", new_user_registration_path, class: "fas fa-user-plus nav-link text-light" %>
                 </li>
                 <li>
-                  <%= link_to "login", new_user_session_path, class: "nav-link text-light" %>
+                  <%= link_to " login", new_user_session_path, class: "fas fa-sign-in-alt nav-link text-light" %>
                 </li>
               <% end %>
             </ul>
@@ -54,7 +55,10 @@
         </div>
       </nav>
     </header>
+    <main>
+      <p id="notice"><%= notice %></p>
     <%= yield %>
+    </main>
     <footer>
       <div class="container mt-5">
         <div class="row">
