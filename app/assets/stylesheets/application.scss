@@ -22,3 +22,14 @@
  .sign_in {
   color: white;
  }
+
+ .red {
+  color: red;
+ }
+
+ a {
+  text-decoration: none;
+  &:hover {
+   text-decoration: none;
+  }
+ }
