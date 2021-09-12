@@ -22,15 +22,17 @@
           </td>
           <td><%= @book.title %></td>
           <td><%= @book.body %></td>
-          <td><%= render 'shared/favorite_btn', book: @book %></td>
-          <td></td>
+          <td class="favorite-btn" id="book_<%= @book.id %>"><%= render 'favorites/favorite-btn', book: @book %></td>
+          <td id="book_<%= @book.id %>_comment">コメント数：<%= @book.book_comments.count %></td>
           <% if @book.user == current_user %>
             <td><%= link_to "Edit", edit_book_path(@book), class: "btn btn-success edit_book_#{@book.id}" %></td>
-            <td><%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に削除しますか?"}, class: "btn btn-danger destroy_book_#{@book.id}" %></td>
+            <td><%= link_to "Destroy", book_path(@book), method: :delete, remote: true, data: {confirm: "本当に削除しますか?"}, class: "btn btn-danger destroy_book_#{@book.id}" %></td>
           <% end %>
         </tbody>
       </table>
-      <%= render 'book_comment', {book: @book, comment: @comment} %>
+      <div class="comments">
+        <%= render 'book_comments/book_comment', {book: @book, book_comment: @book_comment} %>
+      </div>
     </div>
   </div>
 </div>
