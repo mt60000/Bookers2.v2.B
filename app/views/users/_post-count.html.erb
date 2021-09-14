@@ -1,5 +1,5 @@
 <h2>投稿数の前日比・前週比</h2>
-<table>
+<table class="table table-bordered">
   <tr>
     <th>今日の投稿数</th>
     <th>前日の投稿数</th>
@@ -9,11 +9,16 @@
     <td><%= @today_book.count %></td>
     <td><%= @yesterday_book.count %></td>
     <td>
-      <%= @day_comparison = @today_book.count / @yesterday_book.count.to_f %>
+      <% if @yesterday_book.count == 0 %>
+        0%
+      <% else %>
+        <% @day_comparison = @today_book.count / @yesterday_book.count.to_f %>
+        <%= (@day_comparison * 100).round %>%
+      <% end %>
     </td>
   </tr>
 </table>
-<table>
+<table class="table table-bordered">
   <tr>
     <th>今週の投稿数</th>
     <th>前週の投稿数</th>
@@ -23,7 +28,12 @@
     <td><%= @this_week_book.count %></td>
     <td><%= @last_week_book.count %></td>
     <td>
-      <%= @week_comparison = @this_week_book.count / @last_week_book.count.to_f %>
+      <% if @last_week_book.count == 0 %>
+        0%
+      <% else %>
+        <%= @week_comparison = @this_week_book.count / @last_week_book.count.to_f %>
+        <%= (@week_comparison * 100).round %>%
+      <% end %>
     </td>
   </tr>
 </table>
