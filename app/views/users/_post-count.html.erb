@@ -31,7 +31,7 @@
       <% if @last_week_book.count == 0 %>
         0%
       <% else %>
-        <%= @week_comparison = @this_week_book.count / @last_week_book.count.to_f %>
+        <% @week_comparison = @this_week_book.count / @last_week_book.count.to_f %>
         <%= (@week_comparison * 100).round %>%
       <% end %>
     </td>

@@ -1,0 +1,46 @@
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  $(document).on('turbolinks:load', function() {
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['６日前', '５日前', '４日前', '３日前', '２日前', '１日前', '今日'],
+        datasets: [
+          {
+            label: '投稿した本の数',
+            data: [<%= books.where(created_at: Time.zone.now.ago(6.days).all_day).count %>,
+                   <%= books.where(created_at: Time.zone.now.ago(5.days).all_day).count %>,
+                   <%= books.where(created_at: Time.zone.now.ago(4.days).all_day).count %>,
+                   <%= books.where(created_at: Time.zone.now.ago(3.days).all_day).count %>,
+                   <%= books.where(created_at: Time.zone.now.ago(2.days).all_day).count %>,
+                   <%= books.where(created_at: Time.zone.now.yesterday.all_day).count %>,
+                   <%= books.where(created_at: Time.zone.now.all_day).count %>],
+            borderColor: "rgba(0,0,255,1)",
+            backgroundColor: "rgba(0,0,0,0)"
+          }
+        ],
+      },
+      options: {
+        title: {
+          display: true,
+          text: '７日間の投稿数の比較'
+        },
+        scale: {
+          y: {
+            suggestedMax: 10,
+            suggestedMin: 0,
+            stepSize: 1,
+          }
+        }
+      }
+    });
+  });
+</script>
+
+
+      <%= render 'users/weekly-post', books: @books %>
+      <%= render 'users/chart', books: @books %>
